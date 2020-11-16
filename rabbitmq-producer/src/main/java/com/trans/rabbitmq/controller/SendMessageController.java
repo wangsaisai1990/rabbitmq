@@ -102,4 +102,18 @@ public class SendMessageController {
         rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
         return "ok";
     }
+
+    //测试有交换机但是不绑定对应的队列
+    @GetMapping("/Testdelay")
+    public String Testdelay() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: lonelyDirectExchange test message ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
+        return "ok";
+    }
 }

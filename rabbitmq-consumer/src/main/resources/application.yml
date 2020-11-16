@@ -6,9 +6,13 @@ spring:
     name: rabbitmq-consumer
   #配置rabbitMq 服务器
   rabbitmq:
-    host: 192.168.192.150
+    host: 47.99.110.11
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: rabbitmq123457
     #虚拟host 可以不设置,使用server默认host
     virtual-host: /
+    #确认消息已发送到交换机(Exchange)
+    publisher-confirm-type: correlated
+    #确认消息已发送到队列(Queue)
+    publisher-returns: true
